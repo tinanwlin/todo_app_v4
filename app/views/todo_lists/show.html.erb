@@ -1,0 +1,13 @@
+<h1>Todo List Detail</h1>
+
+<p>
+  <strong>Title:</strong> 
+  <%= @todo_list.title %>
+</p>
+<p>
+  <strong>Description:</strong> 
+  <%= @todo_list.description %>
+</p>
+
+<%= link_to 'Home', todo_lists_path %> |
+<%= link_to 'Edit', edit_todo_list_path(@todo_list) %>

@@ -1,0 +1,28 @@
+<%= form_with scope: :todo_list, url: todo_lists_path, local: true do |form| %>
+  <% if @todo_list.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@todo_list.errors.count, "error") %> prohibited this todo list from being saved:
+      </h2>
+      <ul>
+        <% @todo_list.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end  %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+  </p>
+ 
+  <p>
+    <%= form.label :description %><br>
+    <%= form.text_area :description %>
+  </p>
+ 
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
