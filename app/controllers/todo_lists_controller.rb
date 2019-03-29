@@ -1,11 +1,10 @@
 class TodoListsController < ApplicationController
-
+  before_action :set_todo_list, only: [:show, :edit, :update, :destroy]
   def index
     @todo_lists = TodoList.all
   end
 
   def show
-    @todo_list = TodoList.find(params[:id])
   end
 
   def new
@@ -23,12 +22,9 @@ class TodoListsController < ApplicationController
   end
 
   def edit
-    @todo_list = TodoList.find(params[:id])
   end
 
   def update
-    @todo_list = TodoList.find(params[:id])
-
     if @todo_list.update(todo_list_params)
       redirect_to @todo_list
     else
@@ -37,13 +33,16 @@ class TodoListsController < ApplicationController
   end
 
   def destroy
-    @todo_list = TodoList.find(params[:id])
-
     @todo_list.destroy
     redirect_to todo_lists_path
   end
 
 private
+
+  def set_todo_list
+    @todo_list = TodoList.find(params[:id])
+  end
+
   def todo_list_params
     params.require(:todo_list).permit(:title, :description)
   end
