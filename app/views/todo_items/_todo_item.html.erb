@@ -1,3 +1,24 @@
-<p><%= todo_item.content %></p>
-<%= link_to 'Edit', edit_todo_list_todo_item_path(@todo_list, todo_item.id) %> |
-<%= link_to 'Delete', todo_list_todo_item_path(@todo_list, todo_item.id), method: :delete, data: { confirm: "Are you sure?" } %>
+<div class="row clearfix">
+ <% if todo_item.completed? %>
+
+  <div class="todo_item">
+   <p style="opacity: 0.4;"><strike><%= todo_item.content %></strike></p>
+  </div>
+  <span class="trash">
+    <%= link_to 'Delete', todo_list_todo_item_path(@todo_list, todo_item.id), method: :delete, data: { confirm: "Are you sure?" } %>
+  </span>
+ <% else %>
+  <span class="todo_item">
+    <p><%= todo_item.content %></p>
+  </span>
+  <span>
+    <%= link_to 'Edit', edit_todo_list_todo_item_path(@todo_list, todo_item.id) %> |
+  </span>
+  <span class="trash">
+    <%= link_to 'Delete', todo_list_todo_item_path(@todo_list, todo_item.id), method: :delete, data: { confirm: "Are you sure?" } %> |
+  </span>
+  <span class="complete">
+    <%= link_to 'Mark as Complete', complete_todo_list_todo_item_path(@todo_list, todo_item.id), method: :patch %>
+  </span>
+ <% end %>
+</div>
