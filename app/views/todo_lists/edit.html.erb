@@ -1,6 +1,6 @@
 <h1>Edit Todo List</h1>
 
-<%= render 'form' %>
+<%= render 'form', todo_list: @todo_list %>
 
 <%= link_to 'Home', todo_lists_path %> |
 <%= link_to 'Detail', todo_list_path %>

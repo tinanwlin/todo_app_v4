@@ -1,0 +1,7 @@
+<h1>Edit Todo Item</h1>
+
+<%= form_with model: [ @todo_list, @todo_item ], local: true do |form| %>
+  <%= form.text_field :content %>
+  <%= form.submit %>
+<% end %><br/>
+<%= link_to 'Back to Detail', todo_list_path(@todo_list) %>

@@ -9,5 +9,13 @@
   <%= @todo_list.description %>
 </p>
 
+<div>
+  <%= render @todo_list.todo_items %>
+</div><br/>
+<div>
+  <strong>Add New Todo Items</strong> 
+  <%= render 'todo_items/form' %>
+</div><br/>
+
 <%= link_to 'Home', todo_lists_path %> |
 <%= link_to 'Edit', edit_todo_list_path(@todo_list) %>
